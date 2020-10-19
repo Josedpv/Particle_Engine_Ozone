@@ -244,69 +244,17 @@ function main() {
 	engine.setValues(Examples.fountain);
 	engine.initialize(scene);
 	
-	addSkybox();
+	
 	addGUI();
 	addGUIFirework();
-	addGUISkybox();
+	
      /*****************************FINISH ADDED CODE**************/
 	
 	
 }
  /*****************************START ADDED CODE***************/
-        function addGUISkybox(){//Create animated sky
-	
-	
-	
-	var guiSLSky = gui.addFolder('Skybox');
-	guiSLSky.add(materiall, 'roughness').min(0).max(1).step(0.1).onChange(function (val) {
-		materiall.roughness = val;
-		//materiall.update();
-	});
-	guiSLSky.add(materiall, 'metalness').min(0).max(1).step(0.1).onChange(function (val) {
-		materiall.metalness = val;
-		//materiall.update();
+ 
 
-	});
-	
-
-}
-function addSkybox(){//Create animated sky
-
-	//create video
-	var video= document.createElement('video');
-	video.load();
-	video.autoplay= true;
-	video.needsUpdate= true;
-	video.loop	= true;
-	//choose the video
-	video.src	= "images/Sky.mp4";
-	//video.src	= "images/Lluvia.mp4";
-	//video.src	= "images/Amanecer.mp4";
-	
-	var texture = new THREE.VideoTexture( video );
-
-    var skyGeo;
-    //add sphere
-	skyGeo=	new THREE.SphereGeometry( 300, 30, 30 );
-	
-	//adding the video to the sphere
- 	//var material = new THREE.MeshBasicMaterial({ map: texture,});
-     materiall = new THREE.MeshStandardMaterial( {
-
-    //color: 0xffffff,
-
-    roughness: 1,
-    metalness: 1,
-    map: texture,
-
-    } );
-	var Skybox = new THREE.Mesh(skyGeo, materiall);
-	// put the video both sides of the sphere
-	Skybox.material.side = THREE.DoubleSide;
-	//Skybox.Side = THREE.DoubleSide;
-	//add sky
-	scene.add(Skybox);
-}
      /*****************************FINISH ADDED CODE**************/
 
 function restartEngine(parameters)
